@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
+    tools:context=".VulnDeeplink">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="환영합니다!"
+        android:text="Vuln Deep Link Page"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,24 +19,23 @@
 
 
     <Button
-        android:id="@+id/btn_vulnlink"
+        android:id="@+id/btn_urilink"
         android:layout_width="181dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:text="VULN PAGE"
+        android:text="로그인 화면으로 이동"
         app:layout_constraintEnd_toEndOf="@+id/text"
         app:layout_constraintStart_toStartOf="@+id/text"
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <Button
-        android:id="@+id/btn_detectlink"
+        android:id="@+id/btn_applink"
         android:layout_width="181dp"
         android:layout_height="64dp"
         android:layout_marginTop="4dp"
         android:text="Web OPEN"
-        app:layout_constraintEnd_toEndOf="@+id/btn_vulnlink"
+        app:layout_constraintEnd_toEndOf="@+id/btn_urilink"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_vulnlink"
-        app:layout_constraintTop_toBottomOf="@+id/btn_vulnlink" />
-
+        app:layout_constraintStart_toStartOf="@+id/btn_urilink"
+        app:layout_constraintTop_toBottomOf="@+id/btn_urilink" />
 </androidx.constraintlayout.widget.ConstraintLayout>
