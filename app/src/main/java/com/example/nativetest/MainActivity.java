@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         btn_urilink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlScheme = "market://details?id=youtube";
+//                String urlScheme = "market://details?id=com.nhn.android.webtoon";
+                String urlScheme = "login://loginhost/xxxxxxxxx";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
                 finish();
