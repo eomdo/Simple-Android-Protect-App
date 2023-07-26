@@ -8,14 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class VulnDeeplink extends AppCompatActivity {
+public class DetectDeeplink extends AppCompatActivity {
 
     private Button btn_uri_link;
     private Button btn_app_link;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vuln_deeplink);
+        setContentView(R.layout.activity_detect_deeplink);
 
         Intent intent = getIntent();
         Uri deepLink = intent.getData();

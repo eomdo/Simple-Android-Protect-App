@@ -7,38 +7,36 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.example.nativetest.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn_urilink;
-    private Button btn_applink;
+    private Button btn_vuln_link;
+    private Button btn_detect_link;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn_urilink = findViewById(R.id.btn_urilink);
-        btn_applink = findViewById(R.id.btn_applink);
+        btn_vuln_link = findViewById(R.id.btn_vuln_link);
+        btn_detect_link = findViewById(R.id.btn_detect_link);
 
-        btn_urilink.setOnClickListener(new View.OnClickListener() {
+        btn_vuln_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                String urlScheme = "market://details?id=com.nhn.android.webtoon";
-                String urlScheme = "login://loginhost/xxxxxxxxx";
+                String urlScheme = "vuln://vulnhost?url=www.baselinesecu.co.kr";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
                 finish();
             }
         });
 
-        btn_applink.setOnClickListener(new View.OnClickListener() {
+        btn_detect_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // String srchString = "test";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.naver.com"));
+                String urlScheme = "detect://detecthost?url=www.baselinesecu.co.kr";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
                 finish();
             }

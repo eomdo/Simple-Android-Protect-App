@@ -21,7 +21,7 @@
 
 
     <Button
-        android:id="@+id/btn_vulnlink"
+        android:id="@+id/btn_vuln_link"
         android:layout_width="181dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
@@ -31,14 +31,14 @@
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <Button
-        android:id="@+id/btn_detectlink"
+        android:id="@+id/btn_detect_link"
         android:layout_width="181dp"
         android:layout_height="64dp"
         android:layout_marginTop="4dp"
-        android:text="Web OPEN"
-        app:layout_constraintEnd_toEndOf="@+id/btn_vulnlink"
+        android:text="DETECT PAGE"
+        app:layout_constraintEnd_toEndOf="@+id/btn_vuln_link"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_vulnlink"
-        app:layout_constraintTop_toBottomOf="@+id/btn_vulnlink" />
+        app:layout_constraintStart_toStartOf="@+id/btn_vuln_link"
+        app:layout_constraintTop_toBottomOf="@+id/btn_vuln_link" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
