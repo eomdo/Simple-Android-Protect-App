@@ -18,8 +18,9 @@ public class VulnDeeplink extends AppCompatActivity {
         setContentView(R.layout.activity_vuln_deeplink);
 
         Intent intent = getIntent();
-        Uri deepLink = intent.getData();
-        String homepage_url = deepLink.getQueryParameter("url");
+        String action = intent.getAction();
+        Uri data = intent.getData();
+        String homepage_url = data.getQueryParameter("url");
 
         btn_uri_link = findViewById(R.id.btn_uri_link);
         btn_app_link = findViewById(R.id.btn_app_link);

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                String urlScheme = "market://details?id=com.nhn.android.webtoon";
-                String urlScheme = "vuln://vulnhost?url=www.baselinesecu.co.kr";
+                String urlScheme = "vuln://vulnhost?url=baselinesecu.co.kr";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
                 finish();
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // String srchString = "test";
-                String urlScheme = "detect://detecthost?url=www.baselinesecu.co.kr";
+                String urlScheme = "detect://detecthost?url=baselinesecu.co.kr";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
                 finish();

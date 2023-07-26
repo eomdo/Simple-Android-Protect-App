@@ -2,7 +2,7 @@ package com.example.nativetest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,13 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.util.Timer;
@@ -82,28 +75,35 @@ public class LoginActivity extends AppCompatActivity {
     private void androidDetect() {
         Log.d("[info]", nCnt++ + " - Run Android Detect");
         Handler mHandler = new Handler(Looper.getMainLooper());
-
-
         mHandler.postDelayed(new Runnable() {
-            int is_exit = 0;
+
             @Override
             public void run() {
-//                if (RootCheck()) {
-//                    is_exit++;
-//                }
-
-                detectFrida();
-
-                if (is_exit != 0) {
+                if (RootCheck()) {
                     timerCall.cancel();
-                    System.exit(0);
+                    appExit(1);
+                } else if (detectFrida() == "1") {
+                    timerCall.cancel();
+                    appExit(2);
                 }
             }
         }, 1000);
-
-
     }
 
+    private void appExit(int flag) {
+        androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("종료");
+        if (flag == 1) {
+            builder.setMessage("변경된 OS(루팅)의 기기는 사용이 제한됩니다.");
+        } else if (flag == 2) {
+            builder.setMessage("frida가 감지되어 앱을 종료합니다.");
+        }
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //System.exit(0);
+            }
+        }).setCancelable(false).show();
+    }
     boolean chk_root2() {
         final String[] files = {
                 "/sbin/su",
@@ -148,38 +148,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean RootCheck() {
-        final boolean[] is_root = {false};
         if (chk_root2() || chk_root3()) {
-
-            androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("종료");
-            builder.setMessage("변경된 OS(루팅)의 기기는 사용이 제한됩니다.");
-            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-//                    System.exit(0);
-                }
-            }).setCancelable(false).show();
             return true;
         } else {
             return false;
         }
     }
-
-//    public void detectFrida() {
-////        if (detectFrida()) {
-////
-////            androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
-////            builder.setTitle("종료");
-////            builder.setMessage("변경된 OS(루팅)의 기기는 사용이 제한됩니다.");
-////            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-////                public void onClick(DialogInterface dialog, int whichButton) {
-////                    System.exit(0);
-////                }
-////            }).setCancelable(false).show();
-////        }
-//
-//    }
-//
-//
+    
     public native String detectFrida();
 }
