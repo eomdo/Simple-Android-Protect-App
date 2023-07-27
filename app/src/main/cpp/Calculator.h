@@ -7,7 +7,7 @@
 
 class FridaDetect {
 public:
-    int is_frida_binary();
+    bool is_frida_binary();
 };
 
 

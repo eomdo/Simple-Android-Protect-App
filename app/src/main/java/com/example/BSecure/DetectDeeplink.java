@@ -1,6 +1,4 @@
-package com.example.nativetest;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.BSecure;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.Iterator;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetectDeeplink extends AppCompatActivity {
 

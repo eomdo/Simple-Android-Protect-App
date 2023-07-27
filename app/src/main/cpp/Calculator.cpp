@@ -11,7 +11,7 @@
 
 #define  LOG_TAG  "FRIDA_DETECT"
 
-int FridaDetect::is_frida_binary() {
+bool FridaDetect::is_frida_binary() {
     DIR *dir_info;
     struct dirent *dir_entry;
     char *ptr;
@@ -23,10 +23,10 @@ int FridaDetect::is_frida_binary() {
             if (ptr != NULL) {
                 __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG,
                                     "FRIDA DETECTION [1]: Exits File : %s", dir_entry->d_name);
-                return 1;
+                return true;
             }
         }
         closedir(dir_info);
     }
-    return 0;
+    return false;
 }

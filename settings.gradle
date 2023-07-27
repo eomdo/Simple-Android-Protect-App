@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "native test"
+rootProject.name = "BSecure"
 include ':app'

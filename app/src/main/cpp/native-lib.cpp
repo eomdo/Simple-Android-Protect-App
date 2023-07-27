@@ -2,11 +2,9 @@
 #include <string>
 #include "Calculator.h"
 
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_nativetest_LoginActivity_detectFrida(
-        JNIEnv *env,
-        jobject) {
-
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_BSecure_LoginActivity_detectFrida(JNIEnv *env, jobject thiz) {
     FridaDetect frida = FridaDetect();
-    return reinterpret_cast<jstring>(frida.is_frida_binary());
+    return frida.is_frida_binary();
 }

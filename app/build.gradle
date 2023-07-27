@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.nativetest'
+    namespace 'com.example.BSecure'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.nativetest"
+        applicationId "com.example.BSecure"
         minSdk 24
         targetSdk 33
         versionCode 1

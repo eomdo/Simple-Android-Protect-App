@@ -1,4 +1,4 @@
-package com.example.nativetest;
+package com.example.BSecure;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private int nCnt;
 
     static {
-        System.loadLibrary("nativetest");
+        System.loadLibrary("AntiFrida");
     }
 
     @Override
@@ -70,19 +70,21 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-    }
+        }
 
-    private void androidDetect() {
+        private void androidDetect() {
         Log.d("[info]", nCnt++ + " - Run Android Detect");
         Handler mHandler = new Handler(Looper.getMainLooper());
         mHandler.postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                if (RootCheck()) {
-                    timerCall.cancel();
+                if (RootCheck() && false) {
+                    Log.d("[info]", nCnt++ + " - Rooting Detect Checking...");
+                    //timerCall.cancel();
                     appExit(1);
-                } else if (detectFrida() == "1") {
+                } else if (detectFrida()) {
+                    Log.d("[info]", nCnt++ + " - Frida Detect Checking...");
                     timerCall.cancel();
                     appExit(2);
                 }
@@ -100,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //System.exit(0);
+                System.exit(0);
             }
         }).setCancelable(false).show();
     }
@@ -155,5 +157,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     
-    public native String detectFrida();
+    public native boolean detectFrida();
 }

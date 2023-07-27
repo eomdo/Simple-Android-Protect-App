@@ -1,4 +1,4 @@
-package com.example.nativetest;
+package com.example.BSecure;
 
 import org.junit.Test;
 
