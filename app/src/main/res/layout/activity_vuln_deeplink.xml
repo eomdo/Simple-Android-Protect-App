@@ -23,7 +23,7 @@
         android:layout_width="181dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:text="뒤로가기"
+        android:text="APP OPEN"
         app:layout_constraintEnd_toEndOf="@+id/text"
         app:layout_constraintStart_toStartOf="@+id/text"
         app:layout_constraintTop_toBottomOf="@+id/text" />

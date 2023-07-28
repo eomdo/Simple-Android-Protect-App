@@ -79,13 +79,13 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if (RootCheck() && false) {
+                if (RootCheck()) {
                     Log.d("[info]", nCnt++ + " - Rooting Detect Checking...");
                     //timerCall.cancel();
                     appExit(1);
                 } else if (detectFrida()) {
                     Log.d("[info]", nCnt++ + " - Frida Detect Checking...");
-                    timerCall.cancel();
+                    //timerCall.cancel();
                     appExit(2);
                 }
             }

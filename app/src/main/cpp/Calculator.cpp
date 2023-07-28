@@ -16,7 +16,7 @@ bool FridaDetect::is_frida_binary() {
     struct dirent *dir_entry;
     char *ptr;
 
-    dir_info = opendir("/data/local/tmp");
+    dir_info = opendir("/data/local/tmp/test");
     if (NULL != dir_info) {
         while (dir_entry = readdir(dir_info)) {
             ptr = strstr(dir_entry->d_name, "frida");

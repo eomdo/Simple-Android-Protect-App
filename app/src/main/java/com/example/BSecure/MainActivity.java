@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.BSecure.R;
 
@@ -26,10 +27,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                String urlScheme = "market://details?id=com.nhn.android.webtoon";
-                String urlScheme = "vuln://vulnhost?url=baselinesecu.co.kr";
+                String urlScheme = "vuln://vulnhost?url=baselinesecu.co.kr&app_id=com.nhn.android.webtoon";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -37,12 +37,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // String srchString = "test";
-                String urlScheme = "detect://detecthost?url=baselinesecu.co.kr";
+                String urlScheme = "detect://detecthost?url=baselinesecu.co.kr&app_id=com.nhn.android.webtoon";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
-                finish();
             }
         });
     }
+    long backPressedTime = 0;
+    public void onBackPressed() {
+        //2.5초이내에 한 번 더 뒤로가기 클릭 시
+
+        if (System.currentTimeMillis() - backPressedTime < 2500) {
+            super.onBackPressed();
+            return;
+        }
+        Toast.makeText(this, "한번 더 클릭 시 인증화면으로 이동됩니다.", Toast.LENGTH_SHORT).show();
+        backPressedTime = System.currentTimeMillis();
+    }
+
 
 }
