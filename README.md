@@ -1,4 +1,4 @@
-# android-protect-app-simpleversion
+# BSecure App(android-protect-app-simpleversion)
 ## 기능
 ### 1. 인증화면 구성
  - exported=true 취약점으로 해당 인증기능 우회 실습을 위한 구현.
