@@ -1,4 +1,6 @@
-# BSecure App(android-protect-app-simpleversion)
+# BSecure App(Simple-Android-Protect-App)
+This is an application designed for Android-based mobile app vulnerability analysis and research.
+
 ## 기능
 ### 1. 인증화면 구성
  - exported=true 취약점으로 해당 인증기능 우회 실습을 위한 구현.
