@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btn_vuln_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String urlScheme = "market://details?id=com.nhn.android.webtoon";
-                String urlScheme = "vuln://vulnhost?url=baselinesecu.co.kr&app_id=com.nhn.android.webtoon";
+                String urlScheme = "vuln://vulnhost?web_uri=http://www.baselinesecu.co.kr&app_uri=market://launch?id=com.nhn.android.webtoon";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
             }
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // String srchString = "test";
-                String urlScheme = "detect://detecthost?url=baselinesecu.co.kr&app_id=com.nhn.android.webtoon";
+                String urlScheme = "detect://detecthost?web_uri=http://www.baselinesecu.co.kr&app_uri=market://launch?id=com.nhn.android.webtoon";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlScheme));
                 startActivity(intent);
             }

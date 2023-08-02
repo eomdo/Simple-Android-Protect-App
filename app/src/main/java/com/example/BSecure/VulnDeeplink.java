@@ -23,8 +23,9 @@ public class VulnDeeplink extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         Uri data = intent.getData();
-        String homepage_url = data.getQueryParameter("url");
-        String app_id = data.getQueryParameter("app_id");
+        // web_uri=http://www.baselinesecu.co.kr&app_uri=market://launch?id=com.nhn.android.webtoon
+        String web_uri = data.getQueryParameter("web_uri");
+        String app_uri = data.getQueryParameter("app_uri");
 
         btn_uri_link = findViewById(R.id.btn_uri_link);
         btn_app_link = findViewById(R.id.btn_app_link);
@@ -32,7 +33,7 @@ public class VulnDeeplink extends AppCompatActivity {
         btn_uri_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String srchString = "market://details?id=" + app_id;
+                String srchString = app_uri;
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(srchString));
                 intent.setPackage("com.android.vending");
                 startActivity(intent);
@@ -42,7 +43,7 @@ public class VulnDeeplink extends AppCompatActivity {
 
         btn_app_link.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String srchString = "http://" + homepage_url;
+                String srchString = web_uri;
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(srchString));
                 intent.setPackage("com.sec.android.app.sbrowser");
                 startActivity(intent);

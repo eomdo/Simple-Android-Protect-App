@@ -13,10 +13,12 @@ public class DetectDeeplink extends AppCompatActivity {
 
     private Button btn_uri_link;
     private Button btn_app_link;
-    static String[] allow_domain_list = {
-            "baselinesecu.co.kr", "com.nhn.android.webtoon"
+    static String[] allow_web_uri_list = {
+            "http://www.baselinesecu.co.kr/"
     };
-
+    static String[] allow_app_uri_list = {
+            "market://launch?id=com.nhn.android.webtoon"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,8 @@ public class DetectDeeplink extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         Uri data = intent.getData();
-        String homepage_url = data.getQueryParameter("url");
-        String app_id = data.getQueryParameter("app_id");
+        String web_uri = data.getQueryParameter("web_uri");
+        String app_uri = data.getQueryParameter("app_uri");
 
         btn_uri_link = findViewById(R.id.btn_uri_link);
         btn_app_link = findViewById(R.id.btn_app_link);
@@ -35,14 +37,14 @@ public class DetectDeeplink extends AppCompatActivity {
         btn_uri_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (whitedomainlist(app_id)) {
-                    String srchString = "market://details?id=" + app_id;
+                if (whiteDomainList(app_uri)) {
+                    String srchString = app_uri;
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(srchString));
                     intent.setPackage("com.android.vending");
                     startActivity(intent);
 //                    finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Detect disallowed links!!!\nfiltering: " + app_id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Detect disallowed links!!!\nfiltering: " + app_uri, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -50,22 +52,27 @@ public class DetectDeeplink extends AppCompatActivity {
         btn_app_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (whitedomainlist(homepage_url)) {
-                    String srchString = "http://" + homepage_url;
+                if (whiteDomainList(web_uri)) {
+                    String srchString = web_uri;
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(srchString));
                     intent.setPackage("com.sec.android.app.sbrowser");
                     startActivity(intent);
 //                    finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Detect disallowed links!!!\nfiltering: " + homepage_url, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Detect disallowed links!!!\nfiltering: " + web_uri, Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
 
-    public static boolean whitedomainlist(String str) {
-        for (String startsWith : allow_domain_list) {
+    public static boolean whiteDomainList(String str) {
+        for (String startsWith : allow_web_uri_list) {
+            if(str.startsWith(startsWith)) {
+                return true;
+            }
+        }
+        for (String startsWith : allow_app_uri_list) {
             if(str.startsWith(startsWith)) {
                 return true;
             }
